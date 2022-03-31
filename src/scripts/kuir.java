@@ -16,12 +16,12 @@ public class kuir {
 		else if (command.equals("-k")) {
 			makeKeyword keyword = new makeKeyword();
 			keyword.makeIndex(path);
-//			System.out.println("index.xml 积己 肯丰");
+			System.out.println("index.xml 积己 肯丰");
 		}
 		else if(command.equals("-i")) {
 			makeIndex Index = new makeIndex();
 			Index.Indexer(path);
-//			System.out.println("index.post 积己 肯丰");
+			System.out.println("index.post 积己 肯丰");
 		}
 		else {
 		}

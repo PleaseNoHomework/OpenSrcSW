@@ -1,6 +1,5 @@
 package scripts;
 
-import java.io.File;
 
 public class kuir {
 
@@ -11,7 +10,7 @@ public class kuir {
 		if(command.equals("-c")) {
 			makeCollection collection = new makeCollection();
 			collection.makeCollect(path);
-			System.out.println("collection.xml 积己 肯丰");
+//			System.out.println("collection.xml 积己 肯丰");
 		}
 		else if (command.equals("-k")) {
 			makeKeyword keyword = new makeKeyword();
@@ -21,10 +20,12 @@ public class kuir {
 		else if(command.equals("-i")) {
 			makeIndex Index = new makeIndex();
 			Index.Indexer(path);
-//			System.out.println("index.post 积己 肯丰");
 		}
-		else {
+		else if(command.equals("-s")){
+			String words = args[3];
+			searcher Searcher = new searcher();
+			Searcher.makeSearch(path, words);
+			
 		}
-
 	}
 }

@@ -100,25 +100,25 @@ public class makeIndex {
 				}
 			}
 			
-			HashMap<Integer, String>[] rkwndcl = new HashMap[allArrayName.length];
+			HashMap<String, String> rkwndcl = new HashMap();
 
 			for(int checkHashMap = 0; checkHashMap<allArrayName.length; checkHashMap++) {
-				HashMap<Integer, String> tempRkwndcl = new HashMap();
-					
+//				HashMap<Integer, String> tempRkwndcl = new HashMap();
+				StringBuilder keyRkwndcl = new StringBuilder();		
 					for(int j = 0; j <docList.getLength(); j++) {
-						StringBuilder keyRkwndcl = new StringBuilder();
+
 						int isCheck = 0;
 						for(int l = 0; l < iArrayName[j].length; l++) {
 							if(iArrayName[j][l].equals(allArrayName[checkHashMap])) {
-								keyRkwndcl.append(Wxy[j][l]);
+								keyRkwndcl.append(Wxy[j][l] + " ");
 								isCheck++;
 								break;
 							}
 						}
-						if(isCheck == 0) keyRkwndcl.append("0.0");
-						tempRkwndcl.put(j, keyRkwndcl.toString());
+						if(isCheck == 0) keyRkwndcl.append("0.0 ");
 					}
-				rkwndcl[checkHashMap] = tempRkwndcl;
+					rkwndcl.put(allArrayName[checkHashMap], keyRkwndcl.toString());
+					System.out.println(allArrayName[checkHashMap] +" " + keyRkwndcl.toString());
 			}
 
 			

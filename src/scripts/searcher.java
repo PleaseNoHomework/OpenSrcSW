@@ -22,7 +22,7 @@ public class searcher {
 	@SuppressWarnings({"rawtypes", "unchecked", "nls"})
 	void makeSearch(String path, String words) {
 		try {
-			//ÇØ½¬¸Ê key + value°ª ÃßÃâ + ¸ñÂ÷º°·Î ³ª´²³õ±â 
+			//ï¿½Ø½ï¿½ï¿½ï¿½ key + valueï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ + ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 			FileInputStream s = new FileInputStream(path);
 			ObjectInputStream os = new ObjectInputStream(s);
 			
@@ -51,7 +51,7 @@ public class searcher {
 			
 			
 			
-			//¹ÞÀº word°ª kkmaºÐ¼®±â »ç¿ë	
+			//ï¿½ï¿½ï¿½ï¿½ wordï¿½ï¿½ kkmaï¿½Ð¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½	
 			KeywordExtractor ke = new KeywordExtractor();
 			KeywordList kl = ke.extractKeyword(words, true);
 			
@@ -80,7 +80,7 @@ public class searcher {
 				}
 			}
 			
-			//°¡Àå Å«°ªÀÌ ³·Àº ¼ýÀÚ·Î ¿Àµµ·Ï sort
+			//ï¿½ï¿½ï¿½ï¿½ Å«ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ sort
 			for(int end = 0; end < result.length; end++) {
 				for(int end2 = end+1; end2 < result.length; end2++) {
 					if(result[end] < result[end2]) {
@@ -95,13 +95,17 @@ public class searcher {
 				}							
 			}
 			
-			if(resultIndex[0] == 0) {
-				System.out.println("ÀÔ·ÂÇÑ °ª°ú À¯»çÇÑ °¡ÁßÄ¡°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+
+
+			for(int e = 0; e <3; e++) {
+				if(resultIndex[e] == 0) {
+					if(e == 0) {
+						System.out.println("ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê½ï¿½ï¿½Ï´ï¿½.");
+					}
+					else break;
+				}
+				System.out.println(resultIndex[e]);
 			}
-			else {
-				System.out.println(resultIndex[0] +" " + resultIndex[1] + " " + resultIndex[2]);
-			}
-			
 			
 			
 			

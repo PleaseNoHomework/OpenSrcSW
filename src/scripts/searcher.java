@@ -128,9 +128,4 @@ public class searcher {
 			e.printStackTrace();
 		}
 	}
-
-	private char[] getTagValue(String string, Element eElement) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

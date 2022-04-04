@@ -103,8 +103,6 @@ public class searcher {
 			Document CheckID = docBuilder.parse(folder);
 			
 			
-			NodeList nList = CheckID.getElementsByTagName("doc");
-			
 			for(int e= 0; e < 3; e++) {
 				if(result[e] == 0) {
 					if(e == 0) {

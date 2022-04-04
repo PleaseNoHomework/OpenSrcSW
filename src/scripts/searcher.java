@@ -61,6 +61,7 @@ public class searcher {
 				Keyword kwrd = kl.get(x);
 				wordsKey[x] = kwrd.getString();
 				wordsValue[x] = kwrd.getCnt();
+				System.out.println(wordsKey[x] + " " + wordsValue[x]);
 			}
 			
 			double[] result = new double[keyValue[0].length];
@@ -107,7 +108,7 @@ public class searcher {
 			System.out.println(nList.getLength());
 			
 			for(int e= 0; e < 3; e++) {
-				if(resultIndex[e] == 0) {
+				if(result[e] == 0) {
 					if(e == 0) {
 						System.out.println("입력한 값과 유사한 doc이 없습니다.");
 					}

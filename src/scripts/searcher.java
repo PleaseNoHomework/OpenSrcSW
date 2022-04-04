@@ -61,7 +61,6 @@ public class searcher {
 				Keyword kwrd = kl.get(x);
 				wordsKey[x] = kwrd.getString();
 				wordsValue[x] = kwrd.getCnt();
-				System.out.println(wordsKey[x] + " " + wordsValue[x]);
 			}
 			
 			double[] result = new double[keyValue[0].length];
@@ -105,7 +104,6 @@ public class searcher {
 			
 			
 			NodeList nList = CheckID.getElementsByTagName("doc");
-			System.out.println(nList.getLength());
 			
 			for(int e= 0; e < 3; e++) {
 				if(result[e] == 0) {

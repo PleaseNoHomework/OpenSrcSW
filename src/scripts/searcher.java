@@ -1,12 +1,9 @@
 package scripts;
 
-import java.io.BufferedReader;
+
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -17,10 +14,13 @@ import org.snu.ids.kkma.index.Keyword;
 import org.snu.ids.kkma.index.KeywordExtractor;
 import org.snu.ids.kkma.index.KeywordList;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class searcher {
 	@SuppressWarnings({"rawtypes", "unchecked", "nls"})
-	void makeSearch(String path, String words) {
+	void makeSearch(String path, String indexPath, String words) {
 		try {
 			//해쉬맵 key + value값 추출 + 목차별로 나눠놓기 
 			FileInputStream s = new FileInputStream(path);
@@ -95,6 +95,17 @@ public class searcher {
 				}							
 			}
 			
+			
+			//index.xml 읽어서 문서 번호 가져오기
+			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+			File folder = new File(indexPath);
+			Document CheckID = docBuilder.parse(folder);
+			
+			
+			NodeList nList = CheckID.getElementsByTagName("doc");
+			System.out.println(nList.getLength());
+			
 			for(int e= 0; e < 3; e++) {
 				if(resultIndex[e] == 0) {
 					if(e == 0) {
@@ -102,7 +113,12 @@ public class searcher {
 					}
 					else break;
 				}
-				else System.out.println(e + " ");
+				else {
+					NodeList titleList = CheckID.getElementsByTagName("title").item(resultIndex[e]).getChildNodes();
+					Node Title = (Node) titleList.item(0);
+					String titleData = Title.getNodeValue();
+					System.out.println(titleData);
+				}
 			}
 			
 			
@@ -111,5 +127,10 @@ public class searcher {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	private char[] getTagValue(String string, Element eElement) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -7,24 +7,27 @@ public class kuir {
 		String command =args[0];
 		String path = args[1];
 		
+		// 입력 : -c ./data
 		if(command.equals("-c")) {
 			makeCollection collection = new makeCollection();
 			collection.makeCollect(path);
-//			System.out.println("collection.xml 생성 완료");
 		}
+		// 입력 : -k ./collection.xml
 		else if (command.equals("-k")) {
 			makeKeyword keyword = new makeKeyword();
 			keyword.makeIndex(path);
-//			System.out.println("index.xml 생성 완료");
 		}
+		// 입력 : -s ./index.xml
 		else if(command.equals("-i")) {
 			makeIndex Index = new makeIndex();
 			Index.Indexer(path);
 		}
+		// 입력 : -s ./index.post ./index.xml "문장 입력"
 		else if(command.equals("-s")){
+			String indexPath = args[2];
 			String words = args[3];
 			searcher Searcher = new searcher();
-			Searcher.makeSearch(path, words);
+			Searcher.makeSearch(path, indexPath,words);
 			
 		}
 	}

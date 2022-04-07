@@ -1,9 +1,8 @@
 package scripts;
 
-<<<<<<< HEAD
-=======
-//feature의 searcher
->>>>>>> feature
+
+
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
@@ -17,21 +16,48 @@ import org.snu.ids.kkma.index.Keyword;
 import org.snu.ids.kkma.index.KeywordExtractor;
 import org.snu.ids.kkma.index.KeywordList;
 import org.w3c.dom.Document;
-<<<<<<< HEAD
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 //master의 searcher
-=======
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
->>>>>>> feature
+
 public class searcher {
 	//InnerProduct = 내적값 구하는 함수
-	double[] InnerProduct(String path, String words) {
+	double[] InnerProduct(String[] wordsKey, int[] wordsValue, String[] keyArr, double[][] keyValue) {
+		try {			
+			double[] result = new double[keyValue[0].length];
+			int[] resultIndex = new int[result.length];
+			for (int w = 0; w < result.length; w++) {
+				resultIndex[w] = w;
+			}		
+			for(int j =0 ; j< wordsKey.length; j++) {
+				for(int l = 0; l < keyArr.length; l++) {
+					if(wordsKey[j].equals(keyArr[l])) {
+						for(int k = 0; k < keyValue[l].length; k++) {
+								result[k] += wordsValue[j]*keyValue[l][k];
+						}
+					}
+				}
+			}
+			
+			return result;
+		} catch (Exception e) {
+			double[] error = {-1};
+			e.printStackTrace();
+			return error;
+		}
+
+		
+	}
+	
+	@SuppressWarnings({"rawtypes", "unchecked", "nls"})
+	void CalcSim(String path, String indexPath, String words) {
 		try {
+			//해쉬맵 key + value값 추출 + 목차별로 나눠놓기 
 			FileInputStream s = new FileInputStream(path);
 			ObjectInputStream os = new ObjectInputStream(s);
 			
@@ -54,62 +80,43 @@ public class searcher {
 					keyValue[i][a] = Double.parseDouble(splitKeyValue[a]);		
 				}
 				i++;
-				//받은 word값 kkma분석기 사용	
-				KeywordExtractor ke = new KeywordExtractor();
-				KeywordList kl = ke.extractKeyword(words, true);
-				
-				String wordsKey[] = new String[kl.size()];
-				int wordsValue[] = new int[kl.size()];
-				for(int x =0 ; x<kl.size(); x++) {
-					Keyword kwrd = kl.get(x);
-					wordsKey[x] = kwrd.getString();
-					wordsValue[x] = kwrd.getCnt();
-				}
-				
-				double[] result = new double[keyValue[0].length];
-				int[] resultIndex = new int[result.length];
-				for (int w = 0; w < result.length; w++) {
-					resultIndex[w] = w;
-				}
-				
-				
-				for(int j =0 ; j< wordsKey.length; j++) {
-					for(int l = 0; l < keyArr.length; l++) {
-						if(wordsKey[j].equals(keyArr[l])) {
-							for(int k = 0; k < keyValue[l].length; k++) {
-									result[k] += wordsValue[j]*keyValue[l][k];
-							}
-						}
-					}
-				}
 			}
 			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return result;
-	}
-	
-	@SuppressWarnings({"rawtypes", "unchecked", "nls"})
-	void CalcSim(String path, String indexPath, String words) {
-		try {
-			//해쉬맵 key + value값 추출 + 목차별로 나눠놓기 
-
+			//받은 word값 kkma분석기 사용	
+			KeywordExtractor ke = new KeywordExtractor();
+			KeywordList kl = ke.extractKeyword(words, true);
 			
-			double[] result = InnerProduct(path, words);
+			String wordsKey[] = new String[kl.size()];
+			int wordsValue[] = new int[kl.size()];
+			for(int x =0 ; x<kl.size(); x++) {
+				Keyword kwrd = kl.get(x);
+				wordsKey[x] = kwrd.getString();
+				wordsValue[x] = kwrd.getCnt();
+			}
+			
+			
+			double[] result = InnerProduct(wordsKey, wordsValue, keyArr, keyValue);
 				//현재 내적값 result[k]에 보관되어있음.
 				
 				double[] Sim = new double[result.length];
 				double[] Qroot = new double[result.length];
 				double[] Wroot = new double[result.length];
-
+				int[] resultIndex = new int[result.length];
+				for(int h =0; h < resultIndex.length; h++) resultIndex[h] = h;
 				
 				for(int t = 0; t < result.length; t++) {
 					Qroot[t] = 0; Wroot[t] = 0;
 					for(int ss =0; ss< wordsKey.length; ss++) {
 						Qroot[t] += wordsValue[ss]*wordsValue[ss];
-						for(int tt = 0; tt < )
+					}
+					for(int aa =0 ; aa< wordsKey.length; aa++) {
+						for(int bb = 0; bb < keyArr.length; bb++) {
+							if(wordsKey[aa].equals(keyArr[bb])) {
+								for(int cc = 0; cc < keyValue[bb].length; cc++) {
+										Wroot[cc] += keyValue[bb][cc]*keyValue[bb][cc];
+								}
+							}
+						}
 					}
 					
 					Qroot[t] = Math.sqrt(Qroot[t]);

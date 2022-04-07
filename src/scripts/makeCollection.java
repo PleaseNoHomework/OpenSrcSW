@@ -29,7 +29,6 @@ public class makeCollection {
 			
 			//문서 안의 파일 읽기
 			File folder = new File(collectionPos);
-			System.out.println(folder);
 			File files[] = folder.listFiles();
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			

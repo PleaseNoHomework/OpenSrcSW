@@ -95,7 +95,6 @@ public class searcher {
 				}							
 			}
 			
-			
 			//index.xml 읽어서 문서 번호 가져오기
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
@@ -114,7 +113,7 @@ public class searcher {
 					NodeList titleList = CheckID.getElementsByTagName("title").item(resultIndex[e]).getChildNodes();
 					Node Title = (Node) titleList.item(0);
 					String titleData = Title.getNodeValue();
-					System.out.println(titleData);
+					System.out.println(titleData + " = " + result[e]);
 				}
 			}
 			

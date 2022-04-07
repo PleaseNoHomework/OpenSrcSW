@@ -17,7 +17,7 @@ public class kuir {
 			makeKeyword keyword = new makeKeyword();
 			keyword.makeIndex(path);
 		}
-		// 입력 : -s ./index.xml
+		// 입력 : -i ./index.xml
 		else if(command.equals("-i")) {
 			makeIndex Index = new makeIndex();
 			Index.Indexer(path);

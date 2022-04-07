@@ -20,7 +20,7 @@ import org.w3c.dom.NodeList;
 
 public class searcher {
 	@SuppressWarnings({"rawtypes", "unchecked", "nls"})
-	void makeSearch(String path, String indexPath, String words) {
+	void CalcSim(String path, String indexPath, String words) {
 		try {
 			//해쉬맵 key + value값 추출 + 목차별로 나눠놓기 
 			FileInputStream s = new FileInputStream(path);

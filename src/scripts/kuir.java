@@ -27,7 +27,7 @@ public class kuir {
 			String indexPath = args[2];
 			String words = args[3];
 			searcher Searcher = new searcher();
-			Searcher.makeSearch(path, indexPath,words);
+			Searcher.CalcSim(path, indexPath,words);
 			
 		}
 	}

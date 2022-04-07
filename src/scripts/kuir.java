@@ -16,6 +16,7 @@ public class kuir {
 		else if (command.equals("-k")) {
 			makeKeyword keyword = new makeKeyword();
 			keyword.makeIndex(path);
+
 		}
 		// ют╥б : -i ./index.xml
 		else if(command.equals("-i")) {
@@ -27,8 +28,7 @@ public class kuir {
 			String indexPath = args[2];
 			String words = args[3];
 			searcher Searcher = new searcher();
-			Searcher.CalcSim(path, indexPath,words);
-			
+			Searcher.CalcSim(path, indexPath,words);			
 		}
 	}
 }

@@ -68,13 +68,26 @@ public class Midterm {
 				for(int ss = 0; ss < bodydata.length; ss++) {
 					for(int kk = 0; kk < wordL; kk++) {
 						if(word[kk].equals(bodydata[ss])) {
-							
+							while(true) {
+								
+							}
 						}
 					}
 				}
 				
 				
 				resultSni[gg] = res;
+			}
+			//큰 순서대로정렬
+			
+			for(int ii = 0; ii < resultSni.length; ii++) {
+				for(int jj =0; jj < ii; jj++) {
+					if(resultSni[ii]<resultSni[jj]) {
+						int temp = resultSni[ii];
+						resultSni[ii] = resultSni[jj];
+						resultSni[jj] = temp;
+					}
+				}
 			}
 			
 			

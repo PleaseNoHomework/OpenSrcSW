@@ -60,11 +60,18 @@ public class Midterm {
 			
 			
 			
-			
+			//resultSni에 각 title의최대값 입력
 			int[] resultSni = new int[docList.getLength()];
 			for(int gg = 0; gg < docList.getLength(); gg++) {
 				int res = 0;
-				
+				String[] bodydata = iBody[gg].split("");
+				for(int ss = 0; ss < bodydata.length; ss++) {
+					for(int kk = 0; kk < wordL; kk++) {
+						if(word[kk].equals(bodydata[ss])) {
+							
+						}
+					}
+				}
 				
 				
 				resultSni[gg] = res;

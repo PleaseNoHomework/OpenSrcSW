@@ -30,5 +30,13 @@ public class kuir {
 			searcher Searcher = new searcher();
 			Searcher.CalcSim(path, indexPath,words);			
 		}
+		//입력 :-m ./collection.xml -q "문장 입력"
+		else if(command.equals("-m")) {
+			String words = args[3];
+			String p = args[2];
+			Midterm mid = new Midterm();
+			mid.showSnippet(path, words);
+			
+		}
 	}
 }

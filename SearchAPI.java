@@ -20,7 +20,7 @@ public class SearchAPI {
 			
 			Scanner sc = new Scanner(System.in);
 			String find;
-			System.out.print("°Ë»ö¾î¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ");
+			System.out.print("ê²€ìƒ‰ì–´ë¥¼ ìž…ë ¥í•˜ì„¸ìš”: ");
 			find = sc.next();
 			
 			String text = URLEncoder.encode(find, "UTF-8");
